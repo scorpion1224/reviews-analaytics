@@ -1,3 +1,5 @@
+import time
+
 data = []
 count = 0
 with open('reviews.txt', 'r') as f:
@@ -31,6 +33,7 @@ print('一共有', len(good), '份包含good的文件')
 #good = [d for d in data if 'good' in d]
 
 #文字计数
+start_time = time.time()
 wc = {}#word_count
 for d in data:
 	words = d.split(' ')
@@ -43,6 +46,8 @@ for d in data:
 for word in wc:
 	if wc[word] > 100000:
 		print(word, wc[word])
+end_time = time.time()
+print('花了', end_time - start_time, 'seconds')
 
 print(len(wc))
 
