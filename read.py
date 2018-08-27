@@ -8,6 +8,8 @@ with open('reviews.txt', 'r') as f:
 		    print(len(data))
 print('文件读取完了，共有', len(data), '份文件！')
 
+print(data[0])
+
 sum_len = 0
 for d in data:
 	sum_len = sum_len + len(d)
@@ -26,3 +28,34 @@ for d in data:
 	if 'good' in d:
 		good.append(d)
 print('一共有', len(good), '份包含good的文件')
+#good = [d for d in data if 'good' in d]
+
+#文字计数
+wc = {}#word_count
+for d in data:
+	words = d.split(' ')
+	for word in words:
+		if word in wc:
+			wc[word] += 1
+		else:
+			wc[word] = 1 #新增key进字典
+
+for word in wc:
+	if wc[word] > 100000:
+		print(word, wc[word])
+
+print(len(wc))
+
+while True:
+	word = input('请问你想查什么字:')
+	if word == 'q':
+		break
+	if word in wc:
+		print(word, '出现过的次数', wc[word])
+	else:
+		print('未出现过改字')
+print('感谢查询')
+	
+
+
+
